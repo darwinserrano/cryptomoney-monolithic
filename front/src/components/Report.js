@@ -18,7 +18,7 @@ export default class Report extends Component {
   }
 
   componentDidMount = async () => {
-    const resp = await Axios.get(`/data`)
+    const resp = await Axios.get(`${config.apiUrl}data`)
     this.setState({ data: resp.data })
 
     this.socket = openSocket(config.apiUrl);
