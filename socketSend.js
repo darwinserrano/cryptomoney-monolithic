@@ -5,7 +5,7 @@ const socketSend = (io) => {
   io.on('connection', (websocket) => {
     console.log('Usuario conectado')
 
-    const redisClient = redis.createClient();
+    const redisClient = redis.createClient(process.env.REDIS_URL);
     redisClient.subscribe('cryptomoney-realtime')
     redisClient.on('message', (channel, message) => {
       // console.log(JSON.parse(message).id);
