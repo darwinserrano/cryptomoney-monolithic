@@ -12,10 +12,9 @@ const config = require('./config')
 
 app.use(cors())
 
-app.get('/', (req, res) => {
-  getSymbols().then((resp) => {
-    res.send(resp)
-  })
+app.get('/data', async (req, res, next) => {
+  const resp = await getSymbols()
+  res.send(resp)
 })
 
 // Serve static files from the React frontend app
